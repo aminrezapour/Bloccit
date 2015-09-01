@@ -28,6 +28,9 @@ include RandomData
    )
  end
 
+ Post.find_or_create_by(title: "Emporio Armani", body: "A designer from Italy.")
+ Comment.find_or_create_by(post: posts.sample, body: "Does he know how to fix a button?")
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
