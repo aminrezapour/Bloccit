@@ -15,6 +15,7 @@ class AdvertisementsController < ApplicationController
     @advertisement = Advertisement.new
     @advertisement.title = params[:advertisement][:title]
     @advertisement.copy = params[:advertisement][:copy]
+    @advertisement.price = params[:advertisement][:price]
 
     if @advertisement.save
        flash[:notice] = "Advertisement was saved."
