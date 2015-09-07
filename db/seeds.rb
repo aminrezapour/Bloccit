@@ -31,6 +31,14 @@ include RandomData
    )
  end
 
+ 5.times do
+   Question.create!(
+     title: RandomData.random_sentence,
+     body: RandomData.random_paragraph,
+     resolved: false
+   )
+ end
+
  Post.find_or_create_by(title: "Emporio Armani", body: "A designer from Italy.")
  Comment.find_or_create_by(post: posts.sample, body: "Does he know how to fix a button?")
 
@@ -38,3 +46,4 @@ include RandomData
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Advertisement.count} ads created"
+ puts "#{Question.count} questions created"
