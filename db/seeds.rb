@@ -55,7 +55,7 @@ questions = Question.all
      topic:  topics.sample
    )
 end
-sponsored_posts = Question.all
+sponsored_posts = SponsoredPost.all
 
 Post.find_or_create_by(title: "Emporio Armani", body: "A designer from Italy.")
 Comment.find_or_create_by(post: posts.sample, body: "Does he know how to fix a button?")
