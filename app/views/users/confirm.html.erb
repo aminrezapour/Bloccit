@@ -1,0 +1,9 @@
+<h2>Sign Up Confirmation</h2>
+
+<p>Are you sure these values are correct?</p>
+
+<p>Email: <%=@user.email %></p>
+<p>Name: <%=@user.name %></p>
+
+<%= link_to "Yes", root_path, class: 'btn btn-success' %>
+<%= link_to "No", new_user_path, class: 'btn btn-default' %>
