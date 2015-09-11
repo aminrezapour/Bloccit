@@ -13,7 +13,8 @@ topics = Topic.all
 50.times do
    Post.create!(
      title:  RandomData.random_sentence,
-     body:   RandomData.random_paragraph
+     body:   RandomData.random_paragraph,
+     topic: topics.sample
    )
 end
 posts = Post.all

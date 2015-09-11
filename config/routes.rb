@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   post 'users/confirm' => 'users#confirm'
 
+  resources :sessions, only: [:new, :create, :destroy]
+
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'
   get 'faq' => 'welcome#faq'

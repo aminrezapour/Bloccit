@@ -4,6 +4,7 @@ include RandomData
 RSpec.describe TopicsController, type: :controller do
    let (:my_topic) { Topic.create(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
 
+   # ---------------------------------------------------------------------------
    describe "GET index" do
      it "returns http success" do
        get :index
@@ -16,6 +17,7 @@ RSpec.describe TopicsController, type: :controller do
      end
    end
 
+   # ---------------------------------------------------------------------------
    describe "GET show" do
      it "returns http success" do
        get :show, {id: my_topic.id}
@@ -33,6 +35,7 @@ RSpec.describe TopicsController, type: :controller do
      end
    end
 
+   # ---------------------------------------------------------------------------
    describe "GET new" do
      it "returns http success" do
        get :new
@@ -50,6 +53,7 @@ RSpec.describe TopicsController, type: :controller do
      end
    end
 
+   # ---------------------------------------------------------------------------
    describe "POST create" do
      it "increases the number of topics by 1" do
        expect{ post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}}.to change(Topic,:count).by(1)
@@ -66,6 +70,7 @@ RSpec.describe TopicsController, type: :controller do
      end
    end
 
+   # ---------------------------------------------------------------------------
    describe "GET edit" do
      it "returns http success" do
        get :edit, {id: my_topic.id}
@@ -87,6 +92,7 @@ RSpec.describe TopicsController, type: :controller do
      end
    end
 
+   # ---------------------------------------------------------------------------
    describe "PUT update" do
      it "updates topic with expected attributes" do
        new_name = RandomData.random_sentence
@@ -109,6 +115,7 @@ RSpec.describe TopicsController, type: :controller do
      end
    end
 
+   # ---------------------------------------------------------------------------
    describe "DELETE destroy" do
      it "deletes the topic" do
        delete :destroy, {id: my_topic.id}
@@ -121,4 +128,5 @@ RSpec.describe TopicsController, type: :controller do
        expect(response).to redirect_to topics_path
      end
    end
+   
 end
