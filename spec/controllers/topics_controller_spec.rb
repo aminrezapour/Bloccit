@@ -56,16 +56,16 @@ RSpec.describe TopicsController, type: :controller do
    # ---------------------------------------------------------------------------
    describe "POST create" do
      it "increases the number of topics by 1" do
-       expect{ post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}}.to change(Topic,:count).by(1)
+       expect{ post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph, public: true}}}.to change(Topic,:count).by(1)
      end
 
      it "assigns Topic.last to @topic" do
-       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
+       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph, public: true}}
        expect(assigns(:topic)).to eq Topic.last
      end
 
      it "redirects to the new topic" do
-       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
+       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph, public: true}}
        expect(response).to redirect_to Topic.last
      end
    end
@@ -98,7 +98,7 @@ RSpec.describe TopicsController, type: :controller do
        new_name = RandomData.random_sentence
        new_description = RandomData.random_paragraph
 
-       put :update, id: my_topic.id, topic: { name: new_name, description: new_description }
+       put :update, id: my_topic.id, topic: { name: new_name, description: new_description, public: true }
 
        updated_topic = assigns(:topic)
        expect(updated_topic.id).to eq my_topic.id
@@ -110,7 +110,7 @@ RSpec.describe TopicsController, type: :controller do
        new_name = RandomData.random_sentence
        new_description = RandomData.random_paragraph
 
-       put :update, id: my_topic.id, topic: { name: new_name, description: new_description }
+       put :update, id: my_topic.id, topic: { name: new_name, description: new_description, public: true }
        expect(response).to redirect_to my_topic
      end
    end
@@ -128,5 +128,5 @@ RSpec.describe TopicsController, type: :controller do
        expect(response).to redirect_to topics_path
      end
    end
-   
+
 end

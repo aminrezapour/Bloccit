@@ -9,12 +9,23 @@ include RandomData
 end
 topics = Topic.all
 
+# Create Users
+5.times do
+   user = User.create!(
+     name:     RandomData.random_name,
+     email:    RandomData.random_email,
+     password: RandomData.random_sentence
+   )
+end
+users = User.all
+
 # Create Posts
 50.times do
    Post.create!(
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph,
-     topic: topics.sample
+     topic: topics.sample,
+     user: users.sample
    )
 end
 posts = Post.all
@@ -61,8 +72,15 @@ sponsored_posts = SponsoredPost.all
 Post.find_or_create_by(title: "Emporio Armani", body: "A designer from Italy.")
 Comment.find_or_create_by(post: posts.sample, body: "Does he know how to fix a button?")
 
+user = User.first
+user.update_attributes!(
+  email: 'amin_rr@yahoo.com',
+  password: 'helloworld'
+)
+
 puts "Seed finished"
 puts "#{Topic.count} topics created"
+puts "#{User.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Advertisement.count} ads created"
