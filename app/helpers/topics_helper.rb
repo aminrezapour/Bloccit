@@ -3,4 +3,8 @@ module TopicsHelper
   def user_is_authorized_for_topics?
         current_user && current_user.admin?
   end
+  # used in topics/index.html.erb
+  def user_is_admin_or_moderator_for_topic?
+        current_user && (current_user.admin? || current_user.moderator?)
+  end
 end
