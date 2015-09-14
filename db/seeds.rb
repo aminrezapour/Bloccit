@@ -72,10 +72,18 @@ sponsored_posts = SponsoredPost.all
 Post.find_or_create_by(title: "Emporio Armani", body: "A designer from Italy.")
 Comment.find_or_create_by(post: posts.sample, body: "Does he know how to fix a button?")
 
-user = User.first
-user.update_attributes!(
-  email: 'amin_rr@yahoo.com',
-  password: 'helloworld'
+# Create a member
+ member = User.create!(
+   name:     'Member User',
+   email:    'member@example.com',
+   password: 'helloworld'
+)
+# Create an admin user
+admin = User.create!(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
 )
 
 puts "Seed finished"

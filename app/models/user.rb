@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
    has_many :posts
-   
+
    before_save do
      self.email = email.downcase
      self.name = name.split.map{|s| s.capitalize}.join(" ")
    end
+
+   before_save { self.role ||= :member }
 
    EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -17,4 +19,6 @@ class User < ActiveRecord::Base
              format: { with: EMAIL_REGEX }
 
    has_secure_password
+   enum role: [:member, :admin]
+
 end
