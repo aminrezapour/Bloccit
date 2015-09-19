@@ -193,8 +193,8 @@ RSpec.describe PostsController, type: :controller do
   end
 
   # ============================================================================
-  context "moderator"
-    # do i need to add anything here?
-  end
+  # context "moderator"
+  #   # do i need to add anything here?
+  # end
 
 end
