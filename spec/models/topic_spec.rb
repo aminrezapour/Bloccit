@@ -5,6 +5,10 @@ RSpec.describe Topic, type: :model do
 
    let(:topic) { Topic.create!(name: "New Topic", description: "Posts related to this topic") }
 
+   it { should have_many(:posts) }
+   it { should have_many(:labelings) }
+   it { should have_many(:labels).through(:labelings) }
+
    it { should validate_presence_of(:name) }
    it { should validate_presence_of(:description) }
 
@@ -28,7 +32,5 @@ RSpec.describe Topic, type: :model do
        expect(topic.public).to be(true)
      end
    end
-
-   it { should have_many(:posts) }
 
 end

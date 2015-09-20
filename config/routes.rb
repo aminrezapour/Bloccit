@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :questions
   resources :advertisements
   resources :topics do
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
   post 'users/confirm' => 'users#confirm'
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :labels, only: [:show]
 
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'

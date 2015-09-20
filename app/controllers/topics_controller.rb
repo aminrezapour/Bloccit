@@ -24,6 +24,7 @@ class TopicsController < ApplicationController
 
      if @topic.save
        flash[:notice] = "Topic was saved successfully."
+       @topic.labels = Label.update_labels(params[:topic][:labels])
        redirect_to @topic
      else
        flash[:error] = "Error creating topic. Please try again."
@@ -44,6 +45,7 @@ class TopicsController < ApplicationController
 
      if @topic.save
         flash[:notice] = "Topic was updated."
+        @topic.labels = Label.update_labels(params[:topic][:labels])
        redirect_to @topic
      else
        flash[:error] = "Error saving topic. Please try again."
