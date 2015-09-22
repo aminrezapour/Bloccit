@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
 
    before_save do
      self.email = email.downcase
+    #  puts "*" * 20
+    #  puts self.inspect
      self.name = name.split.map{|s| s.capitalize}.join(" ")
+    #  puts "*" * 20
+    #  puts self.inspect
    end
 
    before_save { self.role ||= :member }
