@@ -8,6 +8,7 @@ RSpec.describe Post, type: :model do
    let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
 
    it { should have_many(:comments) }
+   it { should have_many(:votes) }
 
    it { should have_many(:labelings) }
    it { should have_many(:labels).through(:labelings) }
@@ -34,4 +35,33 @@ RSpec.describe Post, type: :model do
        end
 
    end
+
+# ==============================================================================
+   describe "voting" do
+     before do
+       3.times { post.votes.create!(value: 1) }
+       2.times { post.votes.create!(value: -1) }
+     end
+
+     # ---------------------------------------------------------
+     describe "#up_votes" do
+       it "counts the number of votes with value = 1" do
+         expect( post.up_votes ).to eq(3)
+       end
+     end
+
+     describe "#down_votes" do
+       it "counts the number of votes with value = -1" do
+         expect( post.down_votes ).to eq(2)
+       end
+     end
+
+     describe "#points" do
+       it "returns the sum of all down and up votes" do
+         expect( post.points ).to eq(1)
+       end
+     end
+
+   end
+
 end
