@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :labels, only: [:show]
+  resources :rates, only: [:show]
 
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'

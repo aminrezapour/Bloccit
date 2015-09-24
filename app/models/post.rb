@@ -5,8 +5,8 @@ class Post < ActiveRecord::Base
   has_many :labelings, as: :labelable
   has_many :labels, through: :labelings
 
-  has_many :ratings, as: :rateable
-  has_many :rates, through: :ratings
+  has_one :rating, as: :rateable
+  has_one :rate, through: :rating
 
   # default ordering using scope
   # default_scope { order('created_at DESC') }

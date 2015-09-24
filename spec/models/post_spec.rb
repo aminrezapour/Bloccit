@@ -12,8 +12,8 @@ RSpec.describe Post, type: :model do
    it { should have_many(:labelings) }
    it { should have_many(:labels).through(:labelings) }
 
-   it { should have_many(:ratings) }
-   it { should have_many(:rates).through(:ratings) }
+   it { should have_one(:rating) }
+   it { should have_one(:rate).through(:rating) }
 
    it { should belong_to(:topic) }
    it { should belong_to(:user) }
