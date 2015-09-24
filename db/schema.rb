@@ -86,15 +86,6 @@ ActiveRecord::Schema.define(version: 20150923201440) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "ratings", ["rateable_type", "rateable_id"], name: "index_ratings_on_rateable_type_and_rateable_id"
-
   create_table "sponsored_posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
