@@ -46,7 +46,8 @@ RSpec.describe Post, type: :model do
      # ---------------------------------------------------------
      describe "#up_votes" do
        it "counts the number of votes with value = 1" do
-         expect( post.up_votes ).to eq(3)
+         # one vote is created at post#create
+         expect( post.up_votes ).to eq(4)
        end
      end
 
@@ -58,7 +59,8 @@ RSpec.describe Post, type: :model do
 
      describe "#points" do
        it "returns the sum of all down and up votes" do
-         expect( post.points ).to eq(1)
+         # one vote is created at post#create
+         expect( post.points ).to eq(2)
        end
      end
 
@@ -81,7 +83,17 @@ RSpec.describe Post, type: :model do
            expect(post.rank).to eq (old_rank - 1)
          end
      end
-     
+
+     # ---------------------------------------------------------
+     describe "create_vote callback" do
+        it "triggers create_vote after create" do
+          # how to TDD this callback task?
+          # expect(post).to receive(:create_vote).at_least(:once)
+          # shat should I enter here? post.create is not recognized!
+          # post.create
+        end
+     end
+
    end
 
 end
