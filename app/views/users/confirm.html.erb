@@ -5,5 +5,5 @@
 <p>Email: <%=@user.email %></p>
 <p>Name: <%=@user.name %></p>
 
-<%= link_to "Yes", root_path, class: 'btn btn-success' %>
+<%= link_to "Yes", {controller: "users", action: "create", params: params}, class: 'btn btn-success', method: :post %>
 <%= link_to "No", new_user_path, class: 'btn btn-default' %>
