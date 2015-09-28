@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :labelings, as: :labelable
   has_many :labels, through: :labelings
+  has_many :favorites, dependent: :destroy
 
   # default ordering using scope
   default_scope { order('rank DESC') }

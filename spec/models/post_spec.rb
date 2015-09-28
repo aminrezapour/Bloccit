@@ -13,6 +13,8 @@ RSpec.describe Post, type: :model do
    it { should have_many(:labelings) }
    it { should have_many(:labels).through(:labelings) }
 
+   it {should have_many(:favorites)}
+
    it { should belong_to(:topic) }
    it { should belong_to(:user) }
 
@@ -81,7 +83,7 @@ RSpec.describe Post, type: :model do
            expect(post.rank).to eq (old_rank - 1)
          end
      end
-     
+
    end
 
 end
