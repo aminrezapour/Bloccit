@@ -10,6 +10,8 @@ class Post < ActiveRecord::Base
   # default ordering using scope
   default_scope { order('rank DESC') }
 
+  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
+
   # order by title ascending using scope
   # scope :ordered_by_title, -> { order(title: :asc) }
   # order by time ascending using scope
