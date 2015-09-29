@@ -21,9 +21,17 @@
      </div>
    </div>
 </div>
- 
-<h2>Posts</h2>
-<%= render @user.posts %>
 
-<h2>Comments</h2>
-<%= render @user.comments %>
+<% if User.post_n_comment_total(@user) > 0 %>
+    <h2>Posts</h2>
+    <%= render @user.posts %>
+
+    <h2>Comments</h2>
+    <%= render @user.comments %>
+
+    <!-- # this is not working -->
+    <!-- # <h2>Favorites</h2> -->
+    <!-- # <%= render @user.favorites %> -->
+<% else %>
+    <%="#{@user.name} has not submitted any posts yet."%>
+<% end %>

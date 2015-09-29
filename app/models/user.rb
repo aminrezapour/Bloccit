@@ -37,4 +37,8 @@ class User < ActiveRecord::Base
      "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
    end
 
+   def self.post_n_comment_total(user)
+      user.posts.count + user.comments.count
+   end
+
 end
