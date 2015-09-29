@@ -29,9 +29,9 @@
     <h2>Comments</h2>
     <%= render @user.comments %>
 
-    <!-- # this is not working -->
-    <!-- # <h2>Favorites</h2> -->
-    <!-- # <%= render @user.favorites %> -->
+
+    <h2>Favorites</h2>
+    <%= render @user.favorite_posts %>
 <% else %>
     <%="#{@user.name} has not submitted any posts yet."%>
 <% end %>

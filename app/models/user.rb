@@ -41,4 +41,13 @@ class User < ActiveRecord::Base
       user.posts.count + user.comments.count
    end
 
+   def favorite_posts
+      posts = []
+
+      favorites.each do |favorite|
+        posts << favorite.post
+      end
+      posts
+   end
+
 end
