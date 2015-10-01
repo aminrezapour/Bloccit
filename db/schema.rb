@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927184149) do
+ActiveRecord::Schema.define(version: 20150930171428) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "title"
@@ -97,6 +97,31 @@ ActiveRecord::Schema.define(version: 20150927184149) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rates", force: :cascade do |t|
+    t.integer  "severity"
+    t.integer  "ratelable_id"
+    t.string   "ratelable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "rates", ["ratelable_type", "ratelable_id"], name: "index_rates_on_ratelable_type_and_ratelable_id"
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "rate_id"
+    t.integer  "topic_id"
+    t.integer  "post_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "ratings", ["post_id"], name: "index_ratings_on_post_id"
+  add_index "ratings", ["rate_id"], name: "index_ratings_on_rate_id"
+  add_index "ratings", ["rateable_type", "rateable_id"], name: "index_ratings_on_rateable_type_and_rateable_id"
+  add_index "ratings", ["topic_id"], name: "index_ratings_on_topic_id"
+
   create_table "sponsored_posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -123,6 +148,7 @@ ActiveRecord::Schema.define(version: 20150927184149) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "role"
+    t.string   "auth_token"
   end
 
   create_table "votes", force: :cascade do |t|
