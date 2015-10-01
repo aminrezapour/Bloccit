@@ -32,8 +32,11 @@ Rails.application.routes.draw do
        resources :users, only: [:index, :show, :create, :update]
        resources :topics, only: [:index, :show]
        resources :topics, except: [:edit, :new]
+       resources :posts, only: [:index, :show]
+       resources :posts, except: [:edit, :new]
+       resources :comments, only: [:index, :show]
      end
-   end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
